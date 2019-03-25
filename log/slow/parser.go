@@ -41,7 +41,8 @@ var (
 	headerRe  = regexp.MustCompile(`^#\s+[A-Z]`)
 	metricsRe = regexp.MustCompile(`(\w+): (\S+|\z)`)
 	adminRe   = regexp.MustCompile(`command: (.+)`)
-	setRe     = regexp.MustCompile(`^SET (?:last_insert_id|insert_id|timestamp)`)
+	tsRe      = regexp.MustCompile(`^SET timestamp=([0-9]+);`)
+	setRe     = regexp.MustCompile(`^SET (?:last_insert_id|insert_id)`)
 	useRe     = regexp.MustCompile(`^(?i)use `)
 )
 
@@ -321,6 +322,14 @@ func (p *SlowLogParser) parseQuery(line string) {
 		// In case we are on a group of lines like in test23, lines 27~28, the
 		// query will be "use dbnameb" since the user executed a use command
 		p.event.Query = line
+	} else if m := tsRe.FindStringSubmatch(line); m != nil {
+		if p.opt.Debug {
+			l.Println("set ts")
+		}
+		epoch, err := strconv.ParseInt(m[1], 10, 64)
+		if err == nil {
+			p.event.Ts = time.Unix(epoch, 0)
+		}
 	} else if setRe.MatchString(line) {
 		if p.opt.Debug {
 			l.Println("set var")
