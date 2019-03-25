@@ -20,7 +20,7 @@ package event
 import (
 	"sort"
 
-	"github.com/percona/go-mysql/log"
+	"github.com/updox/go-mysql/log"
 )
 
 // Metrics encapsulate the metrics of an event like Query_time and Rows_sent.

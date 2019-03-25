@@ -20,8 +20,8 @@ package query_test
 import (
 	"testing"
 
-	"github.com/percona/go-mysql/query"
-	_ "github.com/percona/go-mysql/test"
+	"github.com/updox/go-mysql/query"
+	_ "github.com/updox/go-mysql/test"
 	"github.com/stretchr/testify/assert"
 )
 

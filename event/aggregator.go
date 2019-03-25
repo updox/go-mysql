@@ -20,7 +20,7 @@ package event
 import (
 	"time"
 
-	"github.com/percona/go-mysql/log"
+	"github.com/updox/go-mysql/log"
 )
 
 // A Result contains a global class and per-ID classes with finalized metric

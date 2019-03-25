@@ -24,9 +24,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/percona/go-mysql/log"
-	parser "github.com/percona/go-mysql/log/slow"
-	"github.com/percona/go-mysql/test"
+	"github.com/updox/go-mysql/log"
+	parser "github.com/updox/go-mysql/log/slow"
+	"github.com/updox/go-mysql/test"
 	"github.com/stretchr/testify/assert"
 )
 

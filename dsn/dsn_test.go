@@ -24,7 +24,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/percona/go-mysql/test"
+	"github.com/updox/go-mysql/test"
 	"github.com/stretchr/testify/assert"
 )
 
